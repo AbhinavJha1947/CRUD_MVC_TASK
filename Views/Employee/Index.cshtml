@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CRUD_MVC_TASK.Models.Employee>
+
+<h2>Employee List</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Name</td>
+                <td>@emp.Surname</td>
+                <td>@emp.Gender</td>
+                <td>@emp.Department</td>
+                <td>@emp.Email</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = emp.EmployeeID })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = emp.EmployeeID })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Add Employee</a>
